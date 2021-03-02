@@ -1,0 +1,13 @@
+{
+    "name": "wenitalist/tictactoe",
+    "description": "tictactoe",
+    "authors": [
+        {
+            "name": "kirill",
+            "email": "wenitalist@gmail.com"
+        }
+    ],
+    "require": {
+        "symfony/var-dumper": "^5.2"
+    }
+}

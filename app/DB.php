@@ -6,23 +6,29 @@ class DB
 {
     private static $_instance = null;
 
-    protected function __construct() { }
-    protected function __clone() { }
+    protected function __construct()
+    {
+    }
+
+    protected function __clone()
+    {
+    }
+
     public function __wakeup()
     {
         throw new \Exception("Cannot unserialize a singleton.");
     }
 
     const host = "localhost";
-    const name_db   = "guest_book";
+    const name_db = "guest_book";
     const user = "admin";
     const pass = "secret";
     const port = "3306";
     const charset = 'utf8mb4';
     const options = [
-        \PDO::ATTR_ERRMODE            => \PDO::ERRMODE_EXCEPTION,
+        \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
         \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_OBJ,
-        \PDO::ATTR_EMULATE_PREPARES   => false,
+        \PDO::ATTR_EMULATE_PREPARES => false,
     ];
 
     public function connect()

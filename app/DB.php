@@ -8,6 +8,10 @@ class DB
 
     protected function __construct() { }
     protected function __clone() { }
+    public function __wakeup()
+    {
+        throw new \Exception("Cannot unserialize a singleton.");
+    }
 
     const host = "localhost";
     const name_db   = "guest_book";

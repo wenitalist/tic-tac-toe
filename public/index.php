@@ -1,8 +1,7 @@
 <?php
 
 require_once(__DIR__ . '/../vendor/autoload.php');
-//dump($_SERVER);
-//\App\DB::getInstance();
 
-
-$k = App\DB::getInstance();
+$r = new \App\DB();
+$q = $r->query('SELECT * FROM users');
+var_dump($q->fetch());

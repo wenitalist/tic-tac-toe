@@ -4,44 +4,23 @@ namespace App;
 
 class DB
 {
-    private static $_instance = null;
+    protected \PDO $pdo;
 
-    protected function __construct()
+    public function __construct()
     {
+        $r = new \App\Config();
+        $dsn = 'mysql:host=' . $r->get('db_host') . ';dbname=' . $r->get('db_name') . ';charset=utf8mb4;port=' . $r->get('db_port');
+        $this->pdo = new \PDO($dsn, $r->get('db_user'), $r->get('db_password'), [
+            \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+            \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_OBJ,
+            \PDO::ATTR_EMULATE_PREPARES => false,
+        ]);
     }
 
-    protected function __clone()
+    public function query(string $sql, array $bindings = [])
     {
-    }
-
-    public function __wakeup()
-    {
-        throw new \Exception("Cannot unserialize a singleton.");
-    }
-
-    const host = "localhost";
-    const name_db = "guest_book";
-    const user = "admin";
-    const pass = "secret";
-    const port = "3306";
-    const charset = 'utf8mb4';
-    const options = [
-        \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
-        \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_OBJ,
-        \PDO::ATTR_EMULATE_PREPARES => false,
-    ];
-
-    public function connect()
-    {
-        $dsn = 'mysql:host=' . self::host . ';dbname=' . self::name_db . ';charset=' . self::charset . ';port=' . self::port;
-        $this->_instance = new PDO($dsn, self::user, self::pass, self::options);
-    }
-
-    public static function getInstance()
-    {
-        if (self::$_instance != null) {
-            return self::$_instance;
-        }
-        return new self;
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute($bindings);
+        return $stmt;
     }
 }

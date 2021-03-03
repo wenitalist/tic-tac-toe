@@ -12,7 +12,7 @@
     }
 	"autoload": {
         "psr-4": {
-            "tac-tac-toe\\": "app/"
+            "App\\": "app/"
         }
     }
 }

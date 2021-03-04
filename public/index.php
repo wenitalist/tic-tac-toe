@@ -6,8 +6,6 @@ require_once(__DIR__ . '/../vendor/autoload.php');
 //$q = $r->query('SELECT * FROM users');
 //var_dump($q->fetch());
 
-$url_class = new \App\Router();
-$url = $url_class->getUrl();
+$router = new \App\Router();
+$router->checkUrl();
 
-$controller_class = new \App\Controller();
-$controller_class->check_url($url);

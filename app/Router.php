@@ -3,11 +3,16 @@
 
 namespace App;
 
+use App\Controllers\ControllerStudents;
 
 class Router
 {
-    public function getUrl()
+    public function checkUrl()
     {
-        return $_SERVER['REQUEST_URI'];
+        if ($_SERVER['REQUEST_URI'] == "/students")
+        {
+            $constr_stu = new \App\Controllers\ControllerStudents();
+            $constr_stu->outputInfo();
+        }
     }
 }

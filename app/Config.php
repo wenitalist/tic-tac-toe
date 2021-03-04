@@ -6,7 +6,7 @@ namespace App;
 
 class Config
 {
-    protected $config;
+    private $config;
 
     public function __construct()
     {

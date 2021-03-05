@@ -1,9 +1,6 @@
 <?php
 
-
 namespace App;
-
-use App\Controllers\ControllerStudents;
 
 class Router
 {
@@ -11,8 +8,8 @@ class Router
     {
         if ($_SERVER['REQUEST_URI'] == "/students")
         {
-            $constr_stu = new \App\Controllers\ControllerStudents();
-            $constr_stu->outputInfo();
+            $constrStu = new \App\Controllers\ControllerStudents();
+            $constrStu->outputInfo();
         }
     }
 }

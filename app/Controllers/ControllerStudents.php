@@ -19,8 +19,12 @@ class ControllerStudents extends BasicController
             $strDate = $row->date_of_public;
             $strAut .= $strDate;
 
-            $template = BasicController::outputInfo()->load('tablePosts.twig');
-            echo $template->render(['title' => $strTitle, 'content' => $strContent, 'authDate' => $strAut]);
+            $mass = ['title' => $strTitle, 'content' => $strContent, 'authDate' => $strAut];
+
+            return $this->render('tablePosts.twig', $mass);
+
+            //$template = BasicController::outputInfo()->load('tablePosts.twig');
+            //echo $template->render(['title' => $strTitle, 'content' => $strContent, 'authDate' => $strAut]);
         }
     }
 }

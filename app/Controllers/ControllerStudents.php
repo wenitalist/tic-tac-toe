@@ -2,28 +2,25 @@
 
 namespace App\Controllers;
 
-class ControllerStudents
+class ControllerStudents extends BasicController
 {
-    public function outputInfo()
+    public function getInfo()
     {
-        $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/../../Views');
-        $twig = new \Twig\Environment($loader, []);
-
-        $con_db = new \App\DB();
-        $query = $con_db->query('SELECT * FROM posts');
+        $conDb = new \App\DB();
+        $query = $conDb->query('SELECT * FROM posts');
 
         $result = $query->fetchAll();
         foreach ($result as $row) {
-            $str_title = $row->title;
-            $str_content = $row->content;
+            $strTitle = $row->title;
+            $strContent = $row->content;
 
-            $str_aut = $row->author;
-            $str_aut .= " - ";
-            $str_date = $row->date_of_public;
-            $str_aut .= $str_date;
+            $strAut = $row->author;
+            $strAut .= " - ";
+            $strDate = $row->date_of_public;
+            $strAut .= $strDate;
 
-            $template = $twig->load('tablePosts.twig');
-            echo $template->render(['title' => $str_title, 'content' => $str_content, 'authDate' => $str_aut]);
+            $template = BasicController::outputInfo()->load('tablePosts.twig');
+            echo $template->render(['title' => $strTitle, 'content' => $strContent, 'authDate' => $strAut]);
         }
     }
 }

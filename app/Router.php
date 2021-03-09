@@ -8,7 +8,7 @@ class Router
     {
         if ($_SERVER['REQUEST_URI'] == "/students") {
             $constrStu = new \App\Controllers\ControllerStudents();
-            $constrStu->outputInfo();
+            $constrStu->getInfo();
         }
     }
 }

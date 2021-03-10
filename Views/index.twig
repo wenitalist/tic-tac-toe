@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <style>
+        th, td, tr {
+            border: 1px solid black;
+            padding: 3px;
+        }
+        table {
+            border-collapse: collapse;
+            font-size: 20px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    {% block table %}
+
+    {% endblock %}
+</body>
+</html>

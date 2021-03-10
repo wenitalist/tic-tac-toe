@@ -1,34 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <style>
-        th, td, tr {
-            border: 1px solid black;
-            padding: 3px;
-        }
-        .table {
-            border-collapse: collapse;
-            font-size: 20px;
-            margin-top: 5px;
-        }
-    </style>
-</head>
-<body>
-    <div>
-        <table class='table'>
-            <tr>
-                <th>ID</th>
-                <th>Имя пользователя</th>
-                <th>Тип</th>
-            </tr>
-            {% for row in rows %}
+{% extends "index.twig" %}
+
+{% block title %}Таблица студентов{% endblock %}
+{% block table %}
+<div>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Имя пользователя</th>
+            <th>Тип</th>
+        </tr>
+        {% for row in students %}
             <tr>
                 <th>{{ row.id }}</th>
                 <th>{{ row.login }}</th>
                 <th>{{ row.type }}</th>
             </tr>
-            {% endfor %}
-        </table>
-    </div>
-</body>
-</html>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

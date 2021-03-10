@@ -9,7 +9,6 @@ class ControllerTeachers extends BasicController
         $conDb = new \App\DB();
         $query = $conDb->query('SELECT * FROM users WHERE type=:type', ["type" => 'teacher']);
         $result = $query->fetchAll();
-
-        echo $this->render('tableTeachers.twig', $result);
+        return $this->render('tableTeachers.twig', ['teachers' => $result]);
     }
 }

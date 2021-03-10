@@ -7,24 +7,21 @@ class ControllerStudents extends BasicController
     public function getInfo()
     {
         $conDb = new \App\DB();
-        $query = $conDb->query('SELECT * FROM posts');
-
+        $query = $conDb->query('SELECT * FROM users WHERE type=:type', ["type" => 'student']);
         $result = $query->fetchAll();
-        foreach ($result as $row) {
-            $strTitle = $row->title;
-            $strContent = $row->content;
 
-            $strAut = $row->author;
-            $strAut .= " - ";
-            $strDate = $row->date_of_public;
-            $strAut .= $strDate;
+        echo $this->render('tablePosts.twig', $result);
 
-            $mass = ['title' => $strTitle, 'content' => $strContent, 'authDate' => $strAut];
+        //foreach ($result as $row) {
+            //$strLogin = $row->login;
+            //$strType = $row->type;
+            //$strId = $row->id;
 
-            return $this->render('tablePosts.twig', $mass);
+            //$mass = ['id' => $strId, 'login' => $strLogin, 'type' => $strType];
+            //echo $this->render('tablePosts.twig', $mass);
 
             //$template = BasicController::outputInfo()->load('tablePosts.twig');
             //echo $template->render(['title' => $strTitle, 'content' => $strContent, 'authDate' => $strAut]);
-        }
+        //}
     }
 }

@@ -10,5 +10,9 @@ class Router
             $constrStu = new \App\Controllers\ControllerStudents();
             $constrStu->getInfo();
         }
+        if ($_SERVER['REQUEST_URI'] == "/teachers") {
+            $constrStu = new \App\Controllers\ControllerTeachers();
+            $constrStu->getInfo();
+        }
     }
 }

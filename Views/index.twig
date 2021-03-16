@@ -1,25 +1,63 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-    <title>{% block title %}{% endblock %}</title>
-    <style>
-        th, td, tr {
-            border: 1px solid black;
-            padding: 3px;
-        }
-        table {
-            border-collapse: collapse;
-            font-size: 20px;
-            margin-top: 5px;
-        }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+            crossorigin="anonymous"></script>
+    <link type="text/css" rel="stylesheet" href="/css/style.css"/>
+
+    <title>{% block title %}Дневник{% endblock %}</title>
 </head>
 <body>
-</div>
+<header>
+    <nav class="site-header sticky-top py-1">
+        <div class="container d-flex flex-column flex-md-row justify-content-between">
+            <a class="py-2 d-none d-md-inline-block" href="#">Tour</a>
+            <a class="py-2 d-none d-md-inline-block" href="#">Product</a>
+            <a class="py-2 d-none d-md-inline-block" href="#">Features</a>
+        </div>
+    </nav>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/vendor/holder.min.js"></script>
+    <script>
+        Holder.addTheme('thumb', {
+            bg: '#55595c',
+            fg: '#eceeef',
+            text: 'Thumbnail'
+        });
+    </script>
+    {# <div class="menu">
+        <div class="logo">
+
+        </div>
+        <div class="buttonMain">
+            <a href="http://wenitalist.sshkpp.ru/">Главная</a>
+        </div>
+        <div class="buttonStudents">
+            <a href="http://wenitalist.sshkpp.ru/students/">Студенты</a>
+        </div>
+        <div class="buttonTeachers">
+            <a href="http://wenitalist.sshkpp.ru/teachers/">Преподователи</a>
+        </div>
+    </div> #}
+</header>
+<main>
     {% block table %}
 
     {% endblock %}
+</main>
+<footer>
+    <div class="footer">
+        <h2>nu tipa podval</h2>
+    </div>
+</footer>
 </body>
 </html>

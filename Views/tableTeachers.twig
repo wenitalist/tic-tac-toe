@@ -2,20 +2,20 @@
 
 {% block title %}Таблица преподавателей{% endblock %}
 {% block table %}
-<div>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Имя пользователя</th>
-            <th>Тип</th>
-        </tr>
-        {% for row in teachers %}
+    <div>
+        <table>
             <tr>
-                <th>{{ row.id }}</th>
-                <th>{{ row.login }}</th>
-                <th>{{ row.type }}</th>
+                <th>ID</th>
+                <th>Имя пользователя</th>
+                <th>Тип</th>
             </tr>
-        {% endfor %}
-    </table>
-</div>
+            {% for row in teachers %}
+                <tr>
+                    <th>{{ row.id }}</th>
+                    <th>{{ row.login }}</th>
+                    <th>{{ row.type }}</th>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
 {% endblock %}

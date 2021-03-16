@@ -1,76 +1,17 @@
-th, td, tr {
-    border: 1px solid black;
-    padding: 3px;
-}
-
-table {
-    border-collapse: collapse;
-    font-size: 20px;
-    margin-top: 6%;
-}
-
-.menu {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 10%;
-    text-align: center;
-    background-color: grey;
-}
-
 .footer {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 5%;
-    text-align: center;
-    background-color: grey;
+    line-height: 60px;
+    background-color: #c8c8c8;
 }
 
-.logo {
-    position: absolute;
+header {
+    background-color: #c8c8c8;
+    padding-right: 0;
+    padding-left: 0;
 }
 
-.buttonMain {
-    position: absolute;
-    margin-top: 2%;
-    margin-left: 5%;
-}
-
-.buttonStudents {
-    position: absolute;
-    margin-top: 2%;
-    margin-left: 10%;
-}
-
-.buttonTeachers {
-    position: absolute;
-    margin-top: 2%;
-    margin-left: 15%;
-}
-.error {
-    text-align: center;
-    margin-top: 20%;
-}
-
-.container {
-    max-width: 960px;
-}
-
-/*
- * Custom translucent site header
- */
-
-.site-header {
-    background-color: rgba(0, 0, 0, .85);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
-    backdrop-filter: saturate(180%) blur(20px);
-}
-.site-header a {
-    color: #999;
-    transition: ease-in-out color .15s;
-}
-.site-header a:hover {
-    color: #fff;
-    text-decoration: none;
+main > .container {
+    padding-top: 15px;
 }

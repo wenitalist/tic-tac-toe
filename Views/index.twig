@@ -1,62 +1,44 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-            crossorigin="anonymous"></script>
-    <link type="text/css" rel="stylesheet" href="/css/style.css"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/css/style.css"/>
     <title>{% block title %}Дневник{% endblock %}</title>
 </head>
 <body>
-<header>
-    <nav class="site-header sticky-top py-1">
-        <div class="container d-flex flex-column flex-md-row justify-content-between">
-            <a class="py-2 d-none d-md-inline-block" href="#">Tour</a>
-            <a class="py-2 d-none d-md-inline-block" href="#">Product</a>
-            <a class="py-2 d-none d-md-inline-block" href="#">Features</a>
-        </div>
+<header class="container-fluid">
+    <nav class="navbar navbar-expand-sm">
+        <a class="navbar-brand" href="/"><img src="/../favicon.ico" alt="Logo" style="width:40px;"></a>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="http://wenitalist.sshkpp.ru/">Главная</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="http://wenitalist.sshkpp.ru/students/">Студенты</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="http://wenitalist.sshkpp.ru/teachers/">Преподаватели</a>
+            </li>
+        </ul>
     </nav>
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-    <script src="../../assets/js/vendor/popper.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/vendor/holder.min.js"></script>
-    <script>
-        Holder.addTheme('thumb', {
-            bg: '#55595c',
-            fg: '#eceeef',
-            text: 'Thumbnail'
-        });
-    </script>
-    {# <div class="menu">
-        <div class="logo">
-
-        </div>
-        <div class="buttonMain">
-            <a href="http://wenitalist.sshkpp.ru/">Главная</a>
-        </div>
-        <div class="buttonStudents">
-            <a href="http://wenitalist.sshkpp.ru/students/">Студенты</a>
-        </div>
-        <div class="buttonTeachers">
-            <a href="http://wenitalist.sshkpp.ru/teachers/">Преподователи</a>
-        </div>
-    </div> #}
 </header>
-<main>
-    {% block table %}
-
-    {% endblock %}
+<main class="container-fluid">
+    <div class="container">
+        {% block table %}
+            <h1>Zdarova</h1>
+        {% endblock %}
+    </div>
 </main>
-<footer>
-    <div class="footer">
-        <h2>nu tipa podval</h2>
+<footer class="footer">
+    <div class="container">
+        <span class="text-muted">Подвальчик с компотами</span>
     </div>
 </footer>
 </body>

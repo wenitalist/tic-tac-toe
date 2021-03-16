@@ -2,20 +2,23 @@
 
 {% block title %}Таблица студентов{% endblock %}
 {% block table %}
-    <div>
-        <table>
+    <h3>Таблица студентов</h3>
+    <table class="table table-bordered">
+        <thead class="thead-light">
+        <tr>
+            <th>ID</th>
+            <th>Имя пользователя</th>
+            <th>Тип</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for row in students %}
             <tr>
-                <th>ID</th>
-                <th>Имя пользователя</th>
-                <th>Тип</th>
+                <th>{{ row.id }}</th>
+                <th>{{ row.login }}</th>
+                <th>{{ row.type }}</th>
             </tr>
-            {% for row in students %}
-                <tr>
-                    <th>{{ row.id }}</th>
-                    <th>{{ row.login }}</th>
-                    <th>{{ row.type }}</th>
-                </tr>
-            {% endfor %}
-        </table>
-    </div>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

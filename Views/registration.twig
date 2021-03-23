@@ -1,0 +1,28 @@
+{% extends "index.twig" %}
+
+{% block title %}Регистрация{% endblock %}
+{% block table %}
+    <div class="container" style="background-color: #e9e8e8; border-radius: 15px; width: 25%;">
+        <form method="POST" action="/registrationScript/">
+            <h2 style="padding: 10px; text-align: center">Регистрация</h2>
+            <p>
+                <input name="loginReg" class="form-control" type="text" maxlength="30" required placeholder="Имя пользователя"/>
+            </p>
+            <p>
+                <input name="passwordReg" class="form-control" type="password" maxlength="30" required placeholder="Пароль"/>
+            </p>
+            <p>
+                <select class="custom-select" name="selectBox" required>
+                    <option hidden disabled selected value="">Тип учетной записи</option>
+                    <option value="student">Ученик</option>
+                    <option value="teacher">Преподаватель</option>
+                    <option value="parent">Родитель</option>
+                </select>
+            </p>
+            <p style="text-align: right; margin-bottom: 10px;">
+                <a href="http://wenitalist.sshkpp.ru/authorization/" type="button" class="btn btn-outline-secondary">Авторизоваться</a>
+                <input type="submit" name="enterReg" class="btn btn-outline-success" required value="Зарегистрироваться"/>
+            </p>
+        </form>
+    </div>
+{% endblock %}

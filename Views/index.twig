@@ -27,7 +27,14 @@
                 <a class="nav-link" href="http://wenitalist.sshkpp.ru/teachers/">Преподаватели</a>
             </li>
         </ul>
-        <a class="nav-link" href="http://wenitalist.sshkpp.ru/authorization/" style="position: absolute; right: 0">Войти</a>
+        <ul class="navbar-nav" style="position: absolute; right: 0">
+        {% if session.login != null %}
+            <li><a class="nav-link">Вы вошли как: {{ session.login }}</a></li>
+            <li><a class="nav-link" href="/exit/">Выход</a></li>
+        {% else %}
+            <a class="nav-link" href="http://wenitalist.sshkpp.ru/authorization/">Авторизоваться</a>
+        {% endif %}
+        </ul>
     </nav>
 </header>
 <main class="container-fluid">
@@ -37,7 +44,7 @@
 </main>
 <footer class="footer">
     <div class="container">
-        <span class="text-muted">Подвальчик с компотами</span>
+        <span class="text-muted">Подвальчик с компотами и помидорами</span>
     </div>
 </footer>
 </body>

@@ -6,6 +6,6 @@ class ControllerIndex extends BasicController
 {
     public function viewIndex()
     {
-        return $this->render('index.twig', []);
+        return $this->render('index.twig', ['session' => $_SESSION]);
     }
 }

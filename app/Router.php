@@ -4,25 +4,28 @@ namespace App;
 
 class Router
 {
+    public const massUrl = [
+        "/" => [\App\Controllers\ControllerIndex::class, 'viewIndex'],
+        "/authorization/" => [\App\Controllers\ControllerAuthorization::class, 'authorizationForm'],
+        "/students/" => [\App\Controllers\ControllerStudents::class, 'getInfo'],
+        "/teachers/" => [\App\Controllers\ControllerTeachers::class, 'getInfo'],
+        "/registration/" => [\App\Controllers\ControllerRegistration::class, 'registrationForm'],
+        "/authorizationScript/" => [\App\Controllers\ControllerAuthorization::class, 'execute'],
+        "/registrationScript/" => [\App\Controllers\ControllerRegistration::class, 'execute'],
+        "/exit/" => [\App\Controllers\ControllerAuthorization::class, 'exit'],
+    ];
+
     public function checkUrl()
     {
-        if ($_SERVER['REQUEST_URI'] == "/authorization/") {
-            $constrAuth = new \App\Controllers\ControllerAuthorization();
-            echo $constrAuth->authorizationForm();
+        if(isset(self::massUrl[$_SERVER['REQUEST_URI']]))
+        {
+            $controllerClass = self::massUrl[$_SERVER['REQUEST_URI']][0];
+            $method = self::massUrl[$_SERVER['REQUEST_URI']][1];
+            $controller = new $controllerClass();
+            echo $controller->$method();
         }
-        if ($_SERVER['REQUEST_URI'] == "/") {
-            $constr = new \App\Controllers\ControllerIndex();
-            echo $constr->viewIndex();
-        }
-        if ($_SERVER['REQUEST_URI'] == "/students/") {
-            $constrStu = new \App\Controllers\ControllerStudents();
-            echo $constrStu->getInfo();
-        }
-        if ($_SERVER['REQUEST_URI'] == "/teachers/") {
-            $constrTea = new \App\Controllers\ControllerTeachers();
-            echo $constrTea->getInfo();
-        }
-        if ($_SERVER['REQUEST_URI'] != "/teachers/" and $_SERVER['REQUEST_URI'] != "/students/" and $_SERVER['REQUEST_URI'] != "/" and $_SERVER['REQUEST_URI'] != "/authorization/") {
+        else
+        {
             $constrError = new \App\Controllers\ControllerError404();
             echo $constrError->inputError();
         }

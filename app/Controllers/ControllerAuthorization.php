@@ -30,11 +30,11 @@ class ControllerAuthorization extends BasicController
             $hach_pass_db = $result[0]['password'];
             $chek = password_verify($passwordAuth, $hach_pass_db);
 
-            if ($chek == true and $result[0]['login'] == $loginAuth)
+            if ($chek == true and $result[0]['login'] == $loginAuth and $_SESSION['statusAuth'] == (false or null))
             {
                 session_start();
                 $type = $result[0]['type'];
-                $_SESSION["isAuth"] = true;
+                $_SESSION["statusAuth"] = true;
                 $_SESSION["login"] = $loginAuth;
                 $_SESSION["type"] = $type;
                 header("Location: /");
@@ -42,7 +42,7 @@ class ControllerAuthorization extends BasicController
             }
             else
             {
-
+                echo ("ты лох");
             }
         }
     }

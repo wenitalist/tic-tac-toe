@@ -6,13 +6,14 @@ class ControllerAuthorization extends BasicController
 {
     public function authorizationForm()
     {
+        $_SESSION["tryInput"] = false;
         return $this->render('authorization.twig', ['session' => $_SESSION]);
     }
 
     public function exit()
     {
         session_destroy();
-        header("Location: ".$_SERVER['HTTP_REFERER']);
+        header("Location: /");
         exit();
     }
 
@@ -42,7 +43,9 @@ class ControllerAuthorization extends BasicController
             }
             else
             {
-                echo ("ты лох");
+                $_SESSION["tryInput"] = true;
+                header("Location: ".$_SERVER['HTTP_REFERER']);
+                exit();
             }
         }
     }

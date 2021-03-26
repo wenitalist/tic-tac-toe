@@ -1,9 +1,9 @@
 {% extends "index.twig" %}
 
-{% block title %}Таблица студентов{% endblock %}
+{% block title %}Таблица родителей{% endblock %}
 {% block table %}
     <div class="container" style="background-color: #e9e8e8; border: 2px solid #9f9f9f;">
-        <h3>Таблица студентов</h3>
+        <h3>Таблица родителей</h3>
         <table class="table table-bordered table-hover">
             <thead class="thead-light">
             <tr>
@@ -14,7 +14,7 @@
             </tr>
             </thead>
             <tbody>
-            {% for row in students %}
+            {% for row in parents %}
                 <tr>
                     <th>{{ row.id }}</th>
                     <th>{{ row.login }}</th>

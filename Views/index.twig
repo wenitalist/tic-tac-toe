@@ -20,19 +20,13 @@
             <li class="nav-item">
                 <a class="nav-link" href="http://wenitalist.sshkpp.ru/">Главная</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="http://wenitalist.sshkpp.ru/students/">Студенты</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="http://wenitalist.sshkpp.ru/teachers/">Преподаватели</a>
-            </li>
             {% if session.type == "admin" %}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Администрирование</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">1 опция413414134</a>
-                        <a class="dropdown-item" href="#">2 опция</a>
-                        <a class="dropdown-item" href="#">3 опция</a>
+                        <a class="dropdown-item" href="http://wenitalist.sshkpp.ru/students/">Студенты</a>
+                        <a class="dropdown-item" href="http://wenitalist.sshkpp.ru/teachers/">Преподаватели</a>
+                        <a class="dropdown-item" href="http://wenitalist.sshkpp.ru/parents/">Родители</a>
                     </div>
                 </li>
             {% endif %}

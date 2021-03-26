@@ -4,25 +4,32 @@
 {% block table %}
     <div class="container" style="background-color: #e9e8e8; border: 2px solid #9f9f9f;">
         <h3>Таблица преподавателей</h3>
-        <table class="table table-bordered table-hover">
-            <thead class="thead-light">
-            <tr>
-                <th>ID</th>
-                <th>Имя пользователя</th>
-                <th>Тип</th>
-                <th>Подтвержден</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for row in teachers %}
+        <form method="POST" action="/activateTeachers/">
+            <table class="table table-bordered table-hover">
+                <thead class="thead-light">
                 <tr>
-                    <th>{{ row.id }}</th>
-                    <th>{{ row.login }}</th>
-                    <th>{{ row.type }}</th>
-                    <th>{{ row.active }}</th>
+                    <th>ID</th>
+                    <th>Имя пользователя</th>
+                    <th>Тип</th>
+                    <th>Активация</th>
                 </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                {% for row in teachers %}
+                    <tr>
+                        <th>{{ row.id }}</th>
+                        <th>{{ row.login }}</th>
+                        <th>{{ row.type }}</th>
+                        {% if row.active == "no" %}
+                            <th>Activate: <input type='checkbox' name='checkbox_mass[]' value='{{ row.id }}'></th>
+                        {% else %}
+                            <th style="color: green">Activated</th>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <p style="text-align: right; margin-bottom: 5px;"><input type="submit" name="activateTeachers" class="btn btn-outline-success" required value="Активировать"/></p>
+        </form>
     </div>
 {% endblock %}

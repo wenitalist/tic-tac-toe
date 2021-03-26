@@ -20,7 +20,15 @@ class ControllerRegistration extends BasicController
             $hashPass = password_hash($passwordReg, PASSWORD_BCRYPT);
 
             $conDb = new \App\DB();
-            $bindings = array( 'login' => $loginReg, 'password' => $hashPass, 'type' => $selectedBox, 'active' => "yes");
+            if ($_POST['selectBox'] == "student" or $_POST['selectBox'] == "parent")
+            {
+                $bindings = array( 'login' => $loginReg, 'password' => $hashPass, 'type' => $selectedBox, 'active' => "yes");
+            }
+            else
+            {
+                $bindings = array( 'login' => $loginReg, 'password' => $hashPass, 'type' => $selectedBox, 'active' => "no");
+            }
+
             $conDb->query("INSERT INTO users (login, password, type, active) VALUES (:login, :password, :type, :active)", $bindings);
 
             header("Location: ".$_SERVER['HTTP_REFERER']);

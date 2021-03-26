@@ -11,8 +11,11 @@
             <p>
                 <input name="passwordAuth" class="form-control" type="password" maxlength="30" required placeholder="Пароль"/>
             </p>
+            {% if session.tryInput == true %}
+                <p style="padding-left: 1%; color: red;">Неправильный логин или пароль</p>
+            {% endif %}
             {% if session.statusAuth == true %}
-                <p style="padding-left: 1%; color: red;">А ну выйди отсюда, ты уже в аккаунте</p>
+                <p style="padding-left: 1%; color: red;">Вы уже авторизованы</p>
             {% endif %}
             <p style="text-align: right; margin-bottom: 10px;">
                 <a href="http://wenitalist.sshkpp.ru/registration/" type="button" class="btn btn-outline-secondary">Зарегистрироваться</a>

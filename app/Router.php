@@ -15,6 +15,8 @@ class Router
         "/registrationScript/" => [\App\Controllers\ControllerRegistration::class, 'execute'],
         "/exit/" => [\App\Controllers\ControllerAuthorization::class, 'exit'],
         "/activateTeachers/" => [\App\Controllers\ControllerActivateTeachers::class, 'execute'],
+        "/personalArea/" => [\App\Controllers\ControllerPersonalArea::class, 'in'],
+        "/changePassword/" => [\App\Controllers\ControllerPersonalArea::class, 'change'],
     ];
 
     public function checkUrl()

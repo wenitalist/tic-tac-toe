@@ -6,7 +6,6 @@ class ControllerAuthorization extends BasicController
 {
     public function authorizationForm()
     {
-        $_SESSION["tryInput"] = false;
         return $this->render('authorization.twig', ['session' => $_SESSION]);
     }
 
@@ -28,8 +27,9 @@ class ControllerAuthorization extends BasicController
             $bindings = array('loginAuth' => $loginAuth);
             $result = $conDb->query("SELECT * FROM users WHERE login=:loginAuth", $bindings);
             $result = $result->fetchAll(\PDO::FETCH_ASSOC);
-            $hach_pass_db = $result[0]['password'];
-            $chek = password_verify($passwordAuth, $hach_pass_db);
+            $hachPassDb = $result[0]['password'];
+
+            $chek = password_verify($passwordAuth, $hachPassDb);
 
             if ($chek == true and $result[0]['login'] == $loginAuth and $_SESSION['statusAuth'] == (false or null))
             {

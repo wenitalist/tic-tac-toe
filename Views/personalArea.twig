@@ -1,0 +1,36 @@
+{% extends "index.twig" %}
+
+{% block title %}Личный кабинет{% endblock %}
+{% block table %}
+    <div class="container" style="width: 50%">
+        <div class="container" style="text-align: center">
+            <h2>Личный кабинет</h2>
+        </div>
+        <div class="container" style="text-align: center">
+            <p>Здесь вы можете настроить свой аккаунт, поменять пароль и т.д.</p>
+        </div>
+        <section style="width: 100%; height: 100%; display: flex;">
+            <div class="container"
+                 style="border: 1px solid #a4a4a9; border-radius: 8px; width: 49%; margin-right: 8px; margin-left: 8px; padding-right: 0; padding-left: 0">
+                <form method="POST" action="/changePassword/">
+                    <div class="container" style="width: 100%; padding: 12px">
+                        <h5 style="margin-left: 1px">Изменить пароль</h5>
+                        <p style="margin-bottom: 10px"><input name="oldPass" class="form-control" type="password" maxlength="30" required placeholder="Старый пароль"/></p>
+                        <p style="margin-bottom: 10px"><input name="newPass" class="form-control" type="password" maxlength="30" required placeholder="Новый пароль"/></p>
+                        <p style="margin-bottom: 0"><input name="confirmPass" class="form-control" type="password" maxlength="30" required placeholder="Повторите пароль"/></p>
+                    </div>
+                    <div style="border-top: 1px solid #a4a4a9;"></div>
+                    <div class="container" style="width: 100%; padding-right: 0">
+                        <p style="text-align: right; margin: 5px">
+                            {% if session.changePassSuccessful == true %}<a style="color: green">Пароль успешно изменен</a>{% endif %}
+                            {% if session.changePassNewConfirmIncorrect == true %}<a style="color: red">Пароли не совпали</a>{% endif %}
+                            {% if session.changePassOldPassIncorrect == true %}<a style="color: red">Неверный старый пароль</a>{% endif %}
+                            {% if session.changePassNonAuthUser == true %}<a style="color: red">Вы не авторизованы</a>{% endif %}
+                            <input type="submit" name="changePassword" class="btn btn-outline-success" required value="Изменить пароль"/>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+{% endblock %}

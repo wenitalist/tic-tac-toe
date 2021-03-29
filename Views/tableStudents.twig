@@ -17,9 +17,15 @@
             {% for row in students %}
                 <tr>
                     <th>{{ row.id }}</th>
-                    <th>{{ row.login }}</th>
-                    <th>{{ row.type }}</th>
-                    <th>{{ row.active }}</th>
+                    <th>{{ row.fio }}</th>
+                    {% if row.type == "student" %}
+                        <th>Студент</th>
+                    {% endif %}
+                    {% if row.active == "yes" %}
+                        <th>Активирован</th>
+                    {% else %}
+                        <th>Не активирован</th>
+                    {% endif %}
                 </tr>
             {% endfor %}
             </tbody>

@@ -6,7 +6,10 @@
         <form method="POST" action="/registrationScript/">
             <h2 style="padding: 10px; text-align: center">Регистрация</h2>
             <p>
-                <input name="loginReg" class="form-control" type="text" maxlength="30" required placeholder="Имя пользователя"/>
+                <input name="fioReg" class="form-control" type="text" maxlength="50" required placeholder="Фамилия И.О."/>
+            </p>
+            <p>
+                <input onkeypress='qwe()' name="loginReg" class="form-control" type="text" maxlength="30" required placeholder="Логин"/>
             </p>
             <p>
                 <input name="passwordReg" class="form-control" type="password" maxlength="30" required placeholder="Пароль"/>
@@ -19,6 +22,12 @@
                     <option value="parent">Родитель</option>
                 </select>
             </p>
+            {% if session.successReg == true %}
+                <p style="padding-left: 1%; color: green;">Вы успешно зарегистрировались</p>
+            {% endif %}
+            {% if session.failedReg == true %}
+                <p style="padding-left: 1%; color: red;">Не удалось зарегистрироваться</p>
+            {% endif %}
             <p style="text-align: right; margin-bottom: 10px;">
                 <a href="http://wenitalist.sshkpp.ru/authorization/" type="button" class="btn btn-outline-secondary">Авторизоваться</a>
                 <input type="submit" name="enterReg" class="btn btn-outline-success" required value="Зарегистрироваться"/>

@@ -10,4 +10,9 @@ abstract class BasicController
         $twig = new \Twig\Environment($loader);
         return $twig->load($view)->render($forRender);
     }
+
+    public function clearMessagesSession()
+    {
+
+    }
 }

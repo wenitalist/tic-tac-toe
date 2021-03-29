@@ -2,6 +2,10 @@
 
 namespace App\Controllers;
 
+ini_set('error_reporting', E_ALL);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+
 class ControllerRegistration extends BasicController
 {
     public function registrationForm()
@@ -11,26 +15,33 @@ class ControllerRegistration extends BasicController
 
     public function execute()
     {
-        if (isset($_POST['passwordReg']) and isset($_POST['loginReg']) and isset($_POST['selectBox']))
-        {
-            $passwordReg = $_POST['passwordReg'];
-            $loginReg = $_POST['loginReg'];
-            $selectedBox = $_POST['selectBox'];
+        $_SESSION['successReg'] = false;
+        $_SESSION['failedReg'] = false;
 
-            $hashPass = password_hash($passwordReg, PASSWORD_BCRYPT);
+        if (isset($_POST['fioReg']) and isset($_POST['passwordReg']) and isset($_POST['loginReg']) and isset($_POST['selectBox']))
+        {
+            $hashPass = password_hash($_POST['passwordReg'], PASSWORD_BCRYPT);
 
             $conDb = new \App\DB();
             if ($_POST['selectBox'] == "student" or $_POST['selectBox'] == "parent")
             {
-                $bindings = array( 'login' => $loginReg, 'password' => $hashPass, 'type' => $selectedBox, 'active' => "yes");
+                $bindings = array( 'fio' => $_POST['fioReg'], 'login' => $_POST['loginReg'], 'password' => $hashPass, 'type' => $_POST['selectBox'], 'active' => "yes");
             }
             else
             {
-                $bindings = array( 'login' => $loginReg, 'password' => $hashPass, 'type' => $selectedBox, 'active' => "no");
+                $bindings = array( 'fio' => $_POST['fioReg'], 'login' => $_POST['loginReg'], 'password' => $hashPass, 'type' => $_POST['selectBox'], 'active' => "no");
             }
 
-            $conDb->query("INSERT INTO users (login, password, type, active) VALUES (:login, :password, :type, :active)", $bindings);
+            $conDb->query("INSERT INTO users (fio, login, password, type, active) VALUES (:fio, :login, :password, :type, :active)", $bindings);
 
+            $_SESSION['successReg'] = true;
+
+            header("Location: ".$_SERVER['HTTP_REFERER']);
+            exit();
+        }
+        else
+        {
+            $_SESSION['failedReg'] = true;
             header("Location: ".$_SERVER['HTTP_REFERER']);
             exit();
         }

@@ -38,6 +38,7 @@ class ControllerAuthorization extends BasicController
                 $_SESSION["statusAuth"] = true;
                 $_SESSION["login"] = $loginAuth;
                 $_SESSION["type"] = $type;
+                $_SESSION["fio"] = $result[0]['fio'];
                 header("Location: /");
                 exit();
             }

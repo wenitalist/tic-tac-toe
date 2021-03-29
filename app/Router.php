@@ -16,7 +16,8 @@ class Router
         "/exit/" => [\App\Controllers\ControllerAuthorization::class, 'exit'],
         "/activateTeachers/" => [\App\Controllers\ControllerActivateTeachers::class, 'execute'],
         "/personalArea/" => [\App\Controllers\ControllerPersonalArea::class, 'in'],
-        "/changePassword/" => [\App\Controllers\ControllerPersonalArea::class, 'change'],
+        "/changePassword/" => [\App\Controllers\ControllerPersonalArea::class, 'changePass'],
+        "/changeFio/" => [\App\Controllers\ControllerPersonalArea::class, 'changeFio'],
     ];
 
     public function checkUrl()

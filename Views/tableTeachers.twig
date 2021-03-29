@@ -4,32 +4,42 @@
 {% block table %}
     <div class="container" style="background-color: #e9e8e8; border: 2px solid #9f9f9f;">
         <h3>Таблица преподавателей</h3>
+        {% if session.type == "admin" %}
         <form method="POST" action="/activateTeachers/">
+            {% endif %}
             <table class="table table-bordered table-hover">
                 <thead class="thead-light">
                 <tr>
                     <th>ID</th>
                     <th>Имя пользователя</th>
                     <th>Тип</th>
-                    <th>Активация</th>
+                    {% if session.type == "admin" %}
+                        <th>Активация</th>
+                    {% endif %}
                 </tr>
                 </thead>
                 <tbody>
                 {% for row in teachers %}
                     <tr>
                         <th>{{ row.id }}</th>
-                        <th>{{ row.login }}</th>
-                        <th>{{ row.type }}</th>
-                        {% if row.active == "no" %}
-                            <th>Activate: <input type='checkbox' name='checkbox_mass[]' value='{{ row.id }}'></th>
-                        {% else %}
-                            <th style="color: green">Activated</th>
+                        <th>{{ row.fio }}</th>
+                        {% if row.type == "teacher" %}
+                            <th>Студент</th>
+                        {% endif %}
+                        {% if session.type == "admin" %}
+                            {% if row.active == "no" %}
+                                <th>Активировать: <input type='checkbox' name='checkbox_mass[]' value='{{ row.id }}'></th>
+                            {% else %}
+                                <th style="color: green">Активирован</th>
+                            {% endif %}
                         {% endif %}
                     </tr>
                 {% endfor %}
                 </tbody>
             </table>
+            {% if session.type == "admin" %}
             <p style="text-align: right; margin-bottom: 5px;"><input type="submit" name="activateTeachers" class="btn btn-outline-success" required value="Активировать"/></p>
         </form>
+        {% endif %}
     </div>
 {% endblock %}
